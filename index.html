@@ -1,1 +1,56 @@
-Hej!
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrera send</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      min-height: 100vh;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    #google-script-embed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <iframe id="google-script-embed" src="" frameborder="0" allowfullscreen>
+    Din webbläsare stöder inte iframes. Besök länken direkt:
+    <a href="https://script.google.com/macros/s/AKfycbwkcxZef61tS1FHHHAug2zrOZIJxy91H1HuioEHChu0rpPJyEWjnih4_-IrIVhkmiLQ/exec">Google Script</a>
+  </iframe>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const BASE_GAS_URL = "https://script.google.com/macros/s/AKfycbwkcxZef61tS1FHHHAug2zrOZIJxy91H1HuioEHChu0rpPJyEWjnih4_-IrIVhkmiLQ/exec";
+      const iframe = document.getElementById('google-script-embed');
+      const urlParams = new URLSearchParams(window.location.search);
+      const boulderValue = urlParams.get('boulder');
+
+      let finalSrc = BASE_GAS_URL;
+      if (boulderValue) {
+        finalSrc += `?boulder=${boulderValue}`;
+      }
+
+      // Fördröjning för att säkerställa att layouten är klar
+      setTimeout(() => {
+        iframe.src = finalSrc;
+      }, 100);
+    });
+  </script>
+
+</body>
+</html>
