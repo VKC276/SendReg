@@ -1,26 +1,24 @@
-
 <!DOCTYPE html>
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registrera send</title>
-<style>
+  <style>
     html, body {
       margin: 0;
       padding: 0;
-      height: 100%;
-      min-height: 100vh;
+      /* Ändrat: Tillåt sidan att växa om iframen blir lång */
+      min-height: 100vh; 
       box-sizing: border-box;
-      overflow: hidden;
+      overflow-y: auto; /* Gör sidan scrollbar */
+      -webkit-overflow-scrolling: touch; /* Mjukare scroll på iPhone */
     }
 
     #google-script-embed {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
+      /* Ändrat: Ta bort position: fixed; så iframen kan ta den plats den behöver */
+      width: 100%;
+      height: 100vh; /* Starta som fullskärm */
       border: none;
       display: block;
     }
@@ -45,7 +43,6 @@
         finalSrc += `?boulder=${boulderValue}`;
       }
 
-      // Fördröjning för att säkerställa att layouten är klar
       setTimeout(() => {
         iframe.src = finalSrc;
       }, 100);
